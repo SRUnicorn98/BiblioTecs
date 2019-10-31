@@ -285,7 +285,7 @@
      
       <div id="notificacion_resul_fci"></div>
 
-      <form  id="f_subir_imagen" name="f_subir_imagen" method="post"  action="subir_imagen_usuario" 
+      <form url="upload" id="frm"  method="post"  action="subir_imagen_usuario" 
         class="formarchivo" enctype="multipart/form-data" >                
         <input type="hidden" name="id_usuario_foto" value="<?= $usuario->id; ?>"> 
         <input type="hidden" name="_token" id="_token"  value="<?= csrf_token(); ?>"> 

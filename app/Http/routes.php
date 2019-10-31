@@ -48,4 +48,13 @@ Route::get('form_educacion_usuario/{id}', 'EducacionController@form_educacion_us
 Route::post('agregar_educacion_usuario', 'EducacionController@agregar_educacion');
 Route::get('borrar_educacion/{id}', 'EducacionController@borrar_educacion');
 
+//RUTAS DE PUBLICACION DE ARCHIVOS
+Route::get('form_publicaciones_usuario/{id}', 'PublicacionesController@form_publicaciones_usuario');
+Route::resource('agregar_publicacion_usuario', 'PublicacionesController@agregar_publicacion');
+Route::get('borrar_publicacion/{id}', 'PublicacionesController@borrar_publicacion');
+Route::get('listado_publicaciones/{id?}', 'PublicacionesController@listado_publicaciones');
+Route::get('descargar_publicacion/{id}', 'PublicacionesController@descargar_publicacion');
 
+//SUBIR ARCHIVO
+Route::get('upload','UploadController@index'); //Lanza la vista
+Route::post('upload','UploadController@subir_archivo'); //Guarda los Archivos

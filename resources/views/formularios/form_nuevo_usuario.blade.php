@@ -1,3 +1,6 @@
+@extends('home')
+@section('content')
+
 <div class="box box-primary col-xs-12">
                 
     <div class="box-header">
@@ -270,3 +273,4 @@ class="form-horizontal form_entrada_usuario" >
 
 </form>
 </div>
+@endsection

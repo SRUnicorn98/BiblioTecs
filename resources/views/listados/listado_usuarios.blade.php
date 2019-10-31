@@ -1,3 +1,7 @@
+@extends('home')
+@section('content')
+    
+
 <div class="box box-primary">
 
 <div class="box-header">
@@ -73,5 +77,5 @@ else
 ?>
 </div>
 
-
+@endsection
 

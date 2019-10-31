@@ -35,7 +35,7 @@ class HomeController extends Controller {
 
        $usuarioactual=\Auth::user();
 
-		return view('master')->with("usuario",  $usuarioactual);
+		return view('home')->with("usuario",  $usuarioactual);
 	}
 
 }

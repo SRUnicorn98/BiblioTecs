@@ -2,6 +2,7 @@
 
 use App\User;
 use Storage;
+use App\Post;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
@@ -48,16 +49,9 @@ class UsuariosController extends Controller {
 
 		$resul= $usuario->save();
 
-		if($resul){
-            
-            return view("mensajes.msj_correcto")->with("msj","Usuario Registrado Correctamente");   
-		}
-		else
-		{
-             
-            return view("mensajes.msj_rechazado")->with("msj","hubo un error vuelva a intentarlo");  
-
-		}
+		$usuarios= User::paginate(25);
+        
+        return view('listados.listado_usuarios')->with("usuarios", $usuarios );
 	}
 
 //leccion 7

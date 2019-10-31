@@ -1,12 +1,15 @@
+@extends('master')
+@section ('body')
 <div class="wrapper">
 
     <header class="main-header">
       <!-- Logo -->
+     
       <a href="index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>PlS</b></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Plu</b>SIS</span>
+        <span class="logo-lg"><b>Virtual</b>BiblioTecs</span>
       </a>
       <!-- Header Navbar: style can be found in header.less -->
       <nav class="navbar navbar-static-top" role="navigation">
@@ -21,6 +24,7 @@
             <!-- User Account: style can be found in dropdown.less -->
             <li class="dropdown user user-menu">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <?php if($usuario->imagenurl==""){ $usuario->imagenurl="imagenes/avatar.jpg"; }  ?>
                 <img src="<?=  $usuario->imagenurl;  ?>"  alt="User Image"  style="width:20px;height:20px;">
                 <span class="hidden-xs"><?=  $usuario->nombres;  ?></span>
               </a>
@@ -29,9 +33,10 @@
                 <li class="user-header">
                     <?php if($usuario->imagenurl==""){ $usuario->imagenurl="imagenes/avatar.jpg"; }  ?>
                     <img src="<?=  $usuario->imagenurl;  ?>"  alt="User Image"  style="width:50px;height:50px;">
-                  <p>
-                   Usuario Plusis
-                    <small>Member since Nov. 2012</small>
+                    <p>Usuario: <?=  $usuario->nombres;  ?></p>
+                    <p>
+                   Usuario de Virtual BiblioTecs
+                    <small>Desarrollo Web</small>
                   </p>
                 </li>
                 <!-- Menu Body -->
@@ -101,21 +106,22 @@
               <i class="fa fa-dashboard"></i> <span>Panel de control</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
-              <li class="active"><a href="javascript:void(0);" onclick="cargarformulario(1);" ><i class="fa fa-circle-o"></i>Agregar usuario </a></li>
-              <li class="active"><a href="javascript:void(0);" onclick="cargarlistado(1,1);" ><i class="fa fa-circle-o"></i>Listado Usuarios</a></li>
+              <li class="active"><a href="{{action ('FormulariosController@form_nuevo_usuario')}}" ><i class="fa fa-circle-o"></i>Agregar usuario </a></li>
+            <li class="active"><a href="{{ action ('ListadoController@listado_usuarios')}}"  ><i class="fa fa-circle-o"></i>Listado Usuarios</a></li>
+            <li class="active"><a href="{{action ('PublicacionesController@listado_publicaciones')}}"><i class="fa fa-circle-o"></i>Publicaciones</a></li>
             </ul>
-          </li>  
+          </li>  <!--http://localhost:8000/listado_usuarios-->
 
 
-          <li class="treeview">
+          <!--<li class="treeview">
             <a href="#">
-              <i class="fa fa-fw fa-user-plus"></i> <span>Datos</span> <i class="fa fa-angle-left pull-right"></i>
+              <i class="fa fa-fw fa-database"></i> <span>Datos</span> <i class="fa fa-angle-left pull-right"></i>
             </a>
             <ul class="treeview-menu">
               <li class="active"><a href="javascript:void(0);" onclick="cargarformulario(2);" ><i class="fa fa-circle-o"></i>Cargar Datos Us. </a></li>
               
             </ul>
-          </li>  
+          </li>  -->
 
 
         
@@ -151,11 +157,9 @@
                     <input type="hidden" id="seccion_seleccionada" value="0"  />
 
                     <div class="margin"  id="botones_control" >
-                        <button type="button" class="btn btn-success " 
-                        onClick="location='retornar_listado_usuarios'">Regresar</button>
-                        <button type="button" class="btn btn-primary" onclick="mostrarseccion(1);" >Informacion</button>
-                        <button type="button" class="btn btn-primary" onclick="mostrarseccion(2);" >Educación</button>
-                                
+                                <button type="button" class="btn btn-primary" onclick="mostrarseccion(1);" >Informacion</button>
+                                <button type="button" class="btn btn-primary" onclick="mostrarseccion(2);" >Educación</button>
+                                <button type="button" class="btn btn-primary" onclick="mostrarseccion(3);" >Publicaciones</button>
                                
                     </div>
                   
@@ -167,7 +171,7 @@
 
       <!-- contenido principal -->
       <section class="content"  id="contenido_principal">
-      
+      @yield('content')
       </section>
   
     <!-- cargador empresa -->
@@ -194,3 +198,4 @@
 
    
   </div><!-- ./wrapper -->
+ @endsection 
